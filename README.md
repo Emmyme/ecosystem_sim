@@ -2,13 +2,19 @@
 
 A CLI-based ecosystem simulation built in Gleam where creatures move, hunt, eat, and survive in a dynamic world.
 
+---
+**Note:** This is a personal hobby project to try out the Gleam programming language.
+---
+
+![Screenshot](assets/img1.png)
+
 ## Features
 
 - **Interactive CLI Interface** - Add creatures, feed them, and watch the ecosystem evolve
 - **Multiple Creature Types** - Herbivores, carnivores, omnivores, and plants with unique behaviors
 - **Predator-Prey Dynamics** - Carnivores hunt herbivores with energy-based mechanics
 - **Energy System** - Creatures consume energy to survive and can starve
-- **Real-time Movement** - Animals move around the grid world automatically
+- **Real-time Movement** - Animals move around the world automatically
 - **Name-based Commands** - Interact with creatures by name
 
 ## How to Run
@@ -48,3 +54,5 @@ Fed Fluffy with 5 energy!
 ```
 
 The simulation automatically advances one turn after each command, so creatures move and interact dynamically!
+
+![Commands](assets/img2.png)

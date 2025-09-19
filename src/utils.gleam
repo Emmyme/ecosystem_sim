@@ -29,11 +29,9 @@ pub fn clamp(value: Int, min: Int, max: Int) -> Int {
 pub fn group_creatures_by_position(
   creatures: List(Creature),
 ) -> List(#(Position, List(Creature))) {
-  // This is a simplified implementation - group creatures sharing the same position
   list.fold(creatures, [], fn(acc, creature) {
     let Creature(_, _, _, _, position) = creature
 
-    // Check if we already have this position in our groups
     case
       list.find(acc, fn(group) {
         let #(pos, _) = group
@@ -41,7 +39,6 @@ pub fn group_creatures_by_position(
       })
     {
       Ok(#(_, existing_creatures)) -> {
-        // Add to existing group and remove the old entry
         let new_group = #(position, [creature, ..existing_creatures])
         let filtered_acc =
           list.filter(acc, fn(group) {
@@ -51,7 +48,6 @@ pub fn group_creatures_by_position(
         [new_group, ..filtered_acc]
       }
       Error(_) -> {
-        // Create new group for this position
         [#(position, [creature]), ..acc]
       }
     }

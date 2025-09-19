@@ -15,11 +15,14 @@ pub fn main() -> Nil {
   // Create initial world
   let initial_world = world.init_world(10, 10)
 
+  // Print the initial grid
+  print_world_grid(initial_world)
+
   // Start the interactive game loop
   interactive_game_loop(initial_world, 1)
 }
 
-// Interactive game loop - handles user input and updates world
+// Interactive game loop
 fn interactive_game_loop(current_world: World, next_id: Int) -> Nil {
   case input.read_line("\n> ") {
     Ok(user_input) -> {
@@ -297,11 +300,15 @@ fn execute_command(
       let new_world =
         handle_add_command(world, name, creature_type, energy, next_id)
       let simulated_world = simulate_turn(new_world)
+      print_world_status(simulated_world)
+      print_world_grid(simulated_world)
       #(simulated_world, next_id + 1)
     }
     FeedCreature(name, energy) -> {
       let new_world = handle_feed_command(world, name, energy)
       let simulated_world = simulate_turn(new_world)
+      print_world_status(simulated_world)
+      print_world_grid(simulated_world)
       #(simulated_world, next_id)
     }
     Step -> {
